@@ -1,0 +1,8 @@
+{
+  "pubkey": "<path to identity pub key>",
+  "privkey": "<path to identity private key>",
+  "url": "<Attestation server URL>",
+  "cacert": "<CA cert bundle>",
+  "role": "<role>",
+  "as_pubkey": "<Attestation server pub key>"
+}

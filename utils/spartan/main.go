@@ -42,7 +42,7 @@ func defaultBaseUrl() string {
 	if s != "" {
 		return s
 	}
-	return "http://localhost:3000/v1"
+	return "https://spartan-example.com:3000/v1"
 }
 
 func defaultUser() string {
@@ -50,7 +50,7 @@ func defaultUser() string {
 	if s != "" {
 		return s
 	}
-	return "admin@example.com"
+	return "admin@spartan-example.com"
 }
 
 func getHomeDir() string {
