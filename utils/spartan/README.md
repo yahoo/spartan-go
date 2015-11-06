@@ -3,10 +3,16 @@ Spartan command-line utility can be used to interact with the provisioner servic
 
 ##Installation
 
-This tool is written in golang, and the executable - `spartan` is already available in the same repo.
+You can `go get` it
+
+```
+$ go get github.com/yahoo/spartan-go/utils/spartan
+````
+
+## Usage and Commands
 
 ```sh
-% ./spartan help
+$ spartan help
 NAME
     spartan - commandline utility to interact with spartan
 
