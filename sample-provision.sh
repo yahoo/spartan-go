@@ -20,3 +20,4 @@ spartan -u $SPARTAN_USERID -s $SPARTAN_URL add-to-role SuperRole test-app1
 # These containers/hosts(identity represents a container/host) would be 
 # able to authorize itself to https://testserver.example.com service
 # via 'SuperRole' role
+spartan -u $SPARTAN_USERID -s $SPARTAN_URL add-to-app test-app1 ../spartan/demo/client/keys/test-ES256-app-pubkey.pem 
