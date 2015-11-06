@@ -1,7 +1,6 @@
-package main
+package spartan
 
-//TODO: make it package spartan
-// Package spartan provides simple API to get token from 
+// Package spartan provides simple API to get token from
 // attestation server(AS) and verify the token
 
 import (
