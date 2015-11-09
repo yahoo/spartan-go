@@ -14,7 +14,7 @@ Spartan provisioner server
 
 `GetToken` function to be used on the client side
 
-```
+```go
 import "github.com/yahoo/spartan-go"
 
 // GetToken returns a token for the specified role
@@ -26,7 +26,7 @@ token, err := spartan.GetToken("SuperRole", tokenOptions)
 
 `VerifyToken` function to be used on the server side
 
-```
+```go
 
 import "github.com/yahoo/spartan-go"
 
