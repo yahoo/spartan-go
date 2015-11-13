@@ -170,7 +170,11 @@ func (cli *Spartan) process(params []string) (*string, error) {
 			return cli.ListRoles()
 		case "add-to-role":
 			if argc >= 3 {
-				return cli.AddMemberToRole(params[1], params[2])
+				if argc >= 4 {
+					return cli.AddMemberToRole(params[1], params[2], params[3])
+				} else {
+					return cli.AddMemberToRole(params[1], params[2], "default")
+				}
 			} else {
 				return nil, fmt.Errorf("Invalid number of arguments")
 			}
@@ -350,7 +354,7 @@ func usage(help bool) string {
 		b.WriteString("     show-role <role>\n")
 		b.WriteString("     create-role <role> <usergroup> [<roleHandle> <roleType> [description ...]]\n")
 		b.WriteString("     remove-role <role>\n")
-		b.WriteString("     add-to-role <role> <app>\n")
+		b.WriteString("     add-to-role <role> <app> [<attribute>]\n")
 		b.WriteString("     remove-from-role <role> <app>\n")
 		b.WriteString("     list-roles\n")
 		b.WriteString("\n")

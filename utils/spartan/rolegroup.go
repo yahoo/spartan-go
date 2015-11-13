@@ -76,10 +76,10 @@ func (cli *Spartan) ListRoles() (*string, error) {
 	return &s, nil
 }
 
-func (cli *Spartan) AddMemberToRole(role string, app string) (*string, error) {
+func (cli *Spartan) AddMemberToRole(role string, app string, attribute string) (*string, error) {
 	var buf bytes.Buffer
 	url := cli.baseUrl + "/role/addmember"
-	data := map[string]string{"role": role, "appname": app}
+	data := map[string]string{"role": role, "appname": app, "attribute": attribute}
 
 	_, code, err := DialHttp(url, "POST", data, cli.userJwt, "", cli.insecureSkipVerify)
 	if err != nil {
