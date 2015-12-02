@@ -11,7 +11,7 @@ import (
 type ConfigParams struct {
 	PubKeyFile   string `json:"pubkey"`
 	PrivKeyFile  string `json:"privkey"`
-	Url          string `json:"url"`
+	URL          string `json:"url"`
 	SkipVerify   bool   `json:"skip_verify"`
 	CaCert       string `json:"cacert"`
 	Role         string `json:"role"`
@@ -35,23 +35,23 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	tokenOptions := &TokenOptions{PubKeyFile: input.PubKeyFile,
+	tokenOptions := &spartan.TokenOptions{PubKeyFile: input.PubKeyFile,
 		PrivKeyFile:        input.PrivKeyFile,
-		Url:                input.Url,
+		URL:                input.URL,
 		InsecureSkipVerify: input.SkipVerify,
 		CaCertFile:         input.CaCert,
 	}
 
-	token, err := GetToken(input.Role, tokenOptions)
+	token, err := spartan.GetToken(input.Role, tokenOptions)
 	if err != nil {
 		fmt.Println("Unable to get token from AS")
 		fmt.Println(err)
 		os.Exit(1)
 	}
 	fmt.Println("Token received from AS: " + token)
-	verifyOptions := &VerifyOptions{ASPubKeyFile: input.ASPubKeyFile,
+	verifyOptions := &spartan.VerifyOptions{ASPubKeyFile: input.ASPubKeyFile,
 		Role: input.Role}
-	err = VerifyToken(token, verifyOptions)
+	err = spartan.VerifyToken(token, verifyOptions)
 	if err != nil {
 		fmt.Println("verifyToken failed")
 		fmt.Println(err)
