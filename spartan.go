@@ -21,7 +21,7 @@ type TokenOptions struct {
 	PubKeyFile         string
 	PrivKeyFile        string
 	SignAlgo           string
-	Url                string
+	URL                string
 	TokenType          string
 	CachePath          string
 	Version            string
@@ -35,14 +35,16 @@ type VerifyOptions struct {
 	ASPubKeyFile string
 	Role         string
 	TokenType    string
-	Ip           string
+	IP           string
 }
 
+// TokenObj represents the object being passed to the Attestation server
 type TokenObj struct {
 	Role    string `json:"role"`
 	AsToken string `json:"astoken"`
 }
 
+// TokenResponse represents the object returned by the Attestation server
 type TokenResponse struct {
 	Tokens []TokenObj `json:"tokens"`
 }
@@ -107,7 +109,7 @@ func GetToken(role string, tokenOptions *TokenOptions) (string, error) {
 		certs.AppendCertsFromPEM(pemData)
 	}
 
-	req, err := http.NewRequest("GET", tokenOptions.Url, nil)
+	req, err := http.NewRequest("GET", tokenOptions.URL, nil)
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("x-spartan-auth-token", tokenString)
 	tr := &http.Transport{
@@ -135,14 +137,12 @@ func GetToken(role string, tokenOptions *TokenOptions) (string, error) {
 		}
 		err = fmt.Errorf("Unable to find the required role token")
 		return "", err
-	} else {
-		body, _ := ioutil.ReadAll(resp.Body)
-		fmt.Println("got failure response")
-		fmt.Println(string(body[:]))
-		err = fmt.Errorf("Failed to get token from attestation server")
-		return string(body[:]), err
-
 	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println("got failure response")
+	fmt.Println(string(body[:]))
+	err = fmt.Errorf("Failed to get token from attestation server")
+	return string(body[:]), err
 
 }
 

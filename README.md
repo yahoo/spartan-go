@@ -2,6 +2,8 @@
 
 Go API for [spartan](https://github.com/yahoo/spartan)
 
+[![GoDoc](https://godoc.org/github.com/yahoo/spartan-go?status.svg)](https://godoc.org/github.com/yahoo/spartan-go) [![Build Status](https://travis-ci.org/yahoo/spartan-go.svg?branch=master)](https://travis-ci.org/yahoo/spartan-go)
+
 ### What's in the box
 
 This library supports fetching a token from spartan Attestation server and
@@ -38,4 +40,4 @@ err = spartan.VerifyToken(token, verifyOptions)
 
 [app.go][] is a demo app which shows how to invoke these functions
 
-[app.go]: [./demo/app.go]
+[app.go]: ./demo/app.go
